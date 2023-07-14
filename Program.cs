@@ -7,6 +7,9 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<ICategoryRepository, MockCategoryRepository>();
 builder.Services.AddScoped<IPieRepository, MockPieRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IPieRepository, PieRepository>();
+
 builder.Services.AddDbContext<BethanysPieShopDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration["ConnectionStrings:BethanysPieShopDbConnection"]);
@@ -23,5 +26,7 @@ if (app.Environment.IsDevelopment())
 app.UseStaticFiles();
 
 app.MapDefaultControllerRoute();
+
+DbSeed.Seed(app);
 
 app.Run();
