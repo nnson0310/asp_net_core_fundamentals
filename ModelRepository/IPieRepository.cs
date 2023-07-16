@@ -1,4 +1,6 @@
-﻿namespace BethanysPieShop.Models
+﻿using BethanysPieShop.Models;
+
+namespace BethanysPieShop.ModelRepository
 {
     public interface IPieRepository
     {
