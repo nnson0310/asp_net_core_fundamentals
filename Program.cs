@@ -12,6 +12,7 @@ builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IPieRepository, PieRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IShoppingCart, ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+builder.Services.AddRazorPages();
 builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
 
@@ -32,6 +33,8 @@ app.UseStaticFiles();
 app.UseSession();
 
 app.MapDefaultControllerRoute();
+
+app.MapRazorPages();
 
 DbSeed.Seed(app);
 
