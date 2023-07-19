@@ -21,6 +21,7 @@ builder.Services.AddScoped<IShoppingCart, ShoppingCart>(sp => ShoppingCart.GetCa
 builder.Services.AddRazorPages();
 builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddServerSideBlazor();
 
 builder.Services.AddDbContext<BethanysPieShopDbContext>(options =>
 {
@@ -34,6 +35,8 @@ if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
 }
 
+app.UseAuthentication();
+
 app.UseStaticFiles();
 
 app.UseSession();
@@ -45,6 +48,10 @@ app.MapDefaultControllerRoute();
 app.UseRouting();
 
 app.MapRazorPages();
+
+app.MapBlazorHub();
+
+app.MapFallbackToPage("/app/{*catchall}", "/App/Index");
 
 DbSeed.Seed(app);
 
