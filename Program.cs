@@ -1,10 +1,16 @@
 using BethanysPieShop.ModelRepository;
 using BethanysPieShop.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+});
+
+//builder.Services.AddControllers();
 
 builder.Services.AddScoped<ICategoryRepository, MockCategoryRepository>();
 builder.Services.AddScoped<IPieRepository, MockPieRepository>();
@@ -33,6 +39,10 @@ app.UseStaticFiles();
 app.UseSession();
 
 app.MapDefaultControllerRoute();
+
+//app.MapControllers();
+
+app.UseRouting();
 
 app.MapRazorPages();
 

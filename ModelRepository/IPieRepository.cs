@@ -8,5 +8,6 @@ namespace BethanysPieShop.ModelRepository
         IEnumerable<Pie> PiesOfTheWeek { get; }
         Pie? GetPieById(int pieId);
         IEnumerable<Pie> SearchPies(string searchQuery);
+        IEnumerable<Pie> SearchPieByName(string pieName);
     }
 }

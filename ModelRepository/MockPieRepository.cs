@@ -25,6 +25,11 @@ namespace BethanysPieShop.ModelRepository
 
         public Pie? GetPieById(int pieId) => AllPies.FirstOrDefault(p => p.PieId == pieId);
 
+        public IEnumerable<Pie> SearchPieByName(string pieName)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Pie> SearchPies(string searchQuery)
         {
             throw new NotImplementedException();

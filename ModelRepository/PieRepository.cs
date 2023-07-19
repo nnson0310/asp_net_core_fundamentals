@@ -25,5 +25,10 @@ namespace BethanysPieShop.ModelRepository
         {
             return _bethanysPieShopDbContext.Pies.Where(p => p.AllergyInformation!.Contains(searchQuery)).ToList();
         }
+
+        public IEnumerable<Pie> SearchPieByName(string name)
+        {
+            return _bethanysPieShopDbContext.Pies.Where(p => p.Name!.Contains(name)).ToList();
+        }
     }
 }
