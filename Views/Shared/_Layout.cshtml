@@ -37,12 +37,13 @@
                             </li>
                         </ul>
                         <vc:shopping-cart-summary></vc:shopping-cart-summary>
+                        <partial name="_LoginPartial"></partial>
                     </div>
                 </div>
             </nav>
         </header>
-
         @RenderBody()
+        @RenderSection("Scripts", required: false)
     </div>
 </body>
 </html>
